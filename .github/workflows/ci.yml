@@ -34,14 +34,14 @@ jobs:
           working-directory: .
           run: docker-compose up -d --build
 
-        - name: Set up Python 3.x
-          uses: actions/setup-python@v1
-          with:
-            python-version: '3.7'
+#        - name: Set up Python 3.x
+#          uses: actions/setup-python@v1
+#          with:
+#            python-version: '3.7'
 
         - name: Install Python pre-reqs
           working-directory: .
-          run: pip3 install -U requests && pip3 install -U pytest
+          run: pip3 install requests && pip3 install pytest
 
         - name: Test using Pytest
           working-directory: .
