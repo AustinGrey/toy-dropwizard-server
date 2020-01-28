@@ -24,4 +24,26 @@ jobs:
               working-directory: .
               run: ./gradlew test
 
+    integration-test:
+      runs-on: ubuntu-latest
+      needs: build-and-test #ensures it will only run if unit tests pass
+      steps:
+        - uses: actions/checkout@v1
+
+        - name: Run server using docker
+          working-directory: .
+          run: docker-compose up -d --build
+
+        - name: Install Python pre-reqs
+          working-directory: .
+          run: pip3 install -U requests && pip3 install -U pytest
+
+        - name: Test using Pytest
+          working-directory: .
+          run: pytest
+
+        - name: Clean-up
+          working-directory: .
+          run: docker-compose down
+
 
