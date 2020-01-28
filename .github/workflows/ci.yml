@@ -36,7 +36,7 @@ jobs:
 
         - name: Install Python pre-reqs
           working-directory: .
-          run: pip3 install -U requests && pip3 install -U pytest
+          run: pip install -U requests && pip install -U pytest
 
         - name: Test using Pytest
           working-directory: .
